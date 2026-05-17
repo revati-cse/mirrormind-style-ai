@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppSidebar } from "@/components/app/AppSidebar";
+import { MobileMenuContext } from "@/components/app/mobile-menu";
 
 export const Route = createFileRoute("/app")({
   head: () => ({
@@ -16,10 +17,7 @@ function AppLayout() {
   const [open, setOpen] = useState(false);
   return (
     <div className="min-h-screen flex bg-background relative">
-      {/* Mobile drawer */}
-      <div
-        className={`lg:hidden fixed inset-0 z-40 transition ${open ? "pointer-events-auto" : "pointer-events-none"}`}
-      >
+      <div className={`lg:hidden fixed inset-0 z-40 transition ${open ? "pointer-events-auto" : "pointer-events-none"}`}>
         <div
           onClick={() => setOpen(false)}
           className={`absolute inset-0 bg-background/70 backdrop-blur-sm transition ${open ? "opacity-100" : "opacity-0"}`}
@@ -34,18 +32,13 @@ function AppLayout() {
       </div>
 
       <main className="flex-1 min-w-0 relative">
-        <div className="absolute inset-0 bg-radial-glow opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 bg-radial-glow opacity-40 pointer-events-none" />
         <div className="relative">
-          {/* Pass setOpen via context isn't worth — children use a header that includes onMenuClick. We expose globally via window? Simpler: render menu button in each page header. Replaced by hook below. */}
-          <MobileMenuButtonContext.Provider value={() => setOpen(true)}>
+          <MobileMenuContext.Provider value={() => setOpen(true)}>
             <Outlet />
-          </MobileMenuButtonContext.Provider>
+          </MobileMenuContext.Provider>
         </div>
       </main>
     </div>
   );
 }
-
-import { createContext, useContext } from "react";
-const MobileMenuButtonContext = createContext<() => void>(() => {});
-export const useMobileMenu = () => useContext(MobileMenuButtonContext);
