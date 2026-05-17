@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { PageShell } from "@/components/app/PageShell";
 import { UploadDrop } from "@/components/app/UploadDrop";
-import { analyzeStyleFn } from "@/server/gemini";
+import { analyzeStyleFn } from "./app.scanner.server";
 import { Loader2, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/app/scanner")({

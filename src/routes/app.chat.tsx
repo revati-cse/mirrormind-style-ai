@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Sparkles, AlertCircle } from "lucide-react";
 import { PageShell } from "@/components/app/PageShell";
-import { chatWithStylistFn } from "@/server/gemini";
+import { chatWithStylistFn } from "./app.chat.server";
 
 export const Route = createFileRoute("/app/chat")({
   head: () => ({ meta: [{ title: "AI Stylist — MirrorMind AI" }] }),

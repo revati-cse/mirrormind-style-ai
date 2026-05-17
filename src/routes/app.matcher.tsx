@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageShell } from "@/components/app/PageShell";
 import { UploadDrop } from "@/components/app/UploadDrop";
-import { generateOutfitMatchesFn } from "@/server/gemini";
+import { generateOutfitMatchesFn } from "./app.matcher.server";
 
 export const Route = createFileRoute("/app/matcher")({
   head: () => ({ meta: [{ title: "Smart Outfit Matcher — MirrorMind AI" }] }),
