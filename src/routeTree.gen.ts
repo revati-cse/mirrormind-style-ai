@@ -9,38 +9,200 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppWardrobeRouteImport } from './routes/app.wardrobe'
+import { Route as AppTwinRouteImport } from './routes/app.twin'
+import { Route as AppTryOnRouteImport } from './routes/app.try-on'
+import { Route as AppTrendsRouteImport } from './routes/app.trends'
+import { Route as AppScannerRouteImport } from './routes/app.scanner'
+import { Route as AppSavedRouteImport } from './routes/app.saved'
+import { Route as AppMatcherRouteImport } from './routes/app.matcher'
+import { Route as AppChatRouteImport } from './routes/app.chat'
+import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppWardrobeRoute = AppWardrobeRouteImport.update({
+  id: '/wardrobe',
+  path: '/wardrobe',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTwinRoute = AppTwinRouteImport.update({
+  id: '/twin',
+  path: '/twin',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTryOnRoute = AppTryOnRouteImport.update({
+  id: '/try-on',
+  path: '/try-on',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTrendsRoute = AppTrendsRouteImport.update({
+  id: '/trends',
+  path: '/trends',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppScannerRoute = AppScannerRouteImport.update({
+  id: '/scanner',
+  path: '/scanner',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSavedRoute = AppSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMatcherRoute = AppMatcherRouteImport.update({
+  id: '/matcher',
+  path: '/matcher',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/login': typeof LoginRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/matcher': typeof AppMatcherRoute
+  '/app/saved': typeof AppSavedRoute
+  '/app/scanner': typeof AppScannerRoute
+  '/app/trends': typeof AppTrendsRoute
+  '/app/try-on': typeof AppTryOnRoute
+  '/app/twin': typeof AppTwinRoute
+  '/app/wardrobe': typeof AppWardrobeRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/matcher': typeof AppMatcherRoute
+  '/app/saved': typeof AppSavedRoute
+  '/app/scanner': typeof AppScannerRoute
+  '/app/trends': typeof AppTrendsRoute
+  '/app/try-on': typeof AppTryOnRoute
+  '/app/twin': typeof AppTwinRoute
+  '/app/wardrobe': typeof AppWardrobeRoute
+  '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/login': typeof LoginRoute
+  '/app/analytics': typeof AppAnalyticsRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/matcher': typeof AppMatcherRoute
+  '/app/saved': typeof AppSavedRoute
+  '/app/scanner': typeof AppScannerRoute
+  '/app/trends': typeof AppTrendsRoute
+  '/app/try-on': typeof AppTryOnRoute
+  '/app/twin': typeof AppTwinRoute
+  '/app/wardrobe': typeof AppWardrobeRoute
+  '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/login'
+    | '/app/analytics'
+    | '/app/chat'
+    | '/app/matcher'
+    | '/app/saved'
+    | '/app/scanner'
+    | '/app/trends'
+    | '/app/try-on'
+    | '/app/twin'
+    | '/app/wardrobe'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/app/analytics'
+    | '/app/chat'
+    | '/app/matcher'
+    | '/app/saved'
+    | '/app/scanner'
+    | '/app/trends'
+    | '/app/try-on'
+    | '/app/twin'
+    | '/app/wardrobe'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/login'
+    | '/app/analytics'
+    | '/app/chat'
+    | '/app/matcher'
+    | '/app/saved'
+    | '/app/scanner'
+    | '/app/trends'
+    | '/app/try-on'
+    | '/app/twin'
+    | '/app/wardrobe'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +210,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/wardrobe': {
+      id: '/app/wardrobe'
+      path: '/wardrobe'
+      fullPath: '/app/wardrobe'
+      preLoaderRoute: typeof AppWardrobeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/twin': {
+      id: '/app/twin'
+      path: '/twin'
+      fullPath: '/app/twin'
+      preLoaderRoute: typeof AppTwinRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/try-on': {
+      id: '/app/try-on'
+      path: '/try-on'
+      fullPath: '/app/try-on'
+      preLoaderRoute: typeof AppTryOnRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/trends': {
+      id: '/app/trends'
+      path: '/trends'
+      fullPath: '/app/trends'
+      preLoaderRoute: typeof AppTrendsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/scanner': {
+      id: '/app/scanner'
+      path: '/scanner'
+      fullPath: '/app/scanner'
+      preLoaderRoute: typeof AppScannerRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/saved': {
+      id: '/app/saved'
+      path: '/saved'
+      fullPath: '/app/saved'
+      preLoaderRoute: typeof AppSavedRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/matcher': {
+      id: '/app/matcher'
+      path: '/matcher'
+      fullPath: '/app/matcher'
+      preLoaderRoute: typeof AppMatcherRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/chat': {
+      id: '/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/analytics': {
+      id: '/app/analytics'
+      path: '/analytics'
+      fullPath: '/app/analytics'
+      preLoaderRoute: typeof AppAnalyticsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppChatRoute: typeof AppChatRoute
+  AppMatcherRoute: typeof AppMatcherRoute
+  AppSavedRoute: typeof AppSavedRoute
+  AppScannerRoute: typeof AppScannerRoute
+  AppTrendsRoute: typeof AppTrendsRoute
+  AppTryOnRoute: typeof AppTryOnRoute
+  AppTwinRoute: typeof AppTwinRoute
+  AppWardrobeRoute: typeof AppWardrobeRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAnalyticsRoute: AppAnalyticsRoute,
+  AppChatRoute: AppChatRoute,
+  AppMatcherRoute: AppMatcherRoute,
+  AppSavedRoute: AppSavedRoute,
+  AppScannerRoute: AppScannerRoute,
+  AppTrendsRoute: AppTrendsRoute,
+  AppTryOnRoute: AppTryOnRoute,
+  AppTwinRoute: AppTwinRoute,
+  AppWardrobeRoute: AppWardrobeRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
